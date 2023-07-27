@@ -1,0 +1,48 @@
+server:
+  port: 6677
+
+
+zookeeper:
+  #zk连接地址
+  address: 10.1.4.169:2181
+  #用户名
+  username:
+  #密码
+  password:
+  # zk超时信息设置
+  connection-timeout-ms: 5000
+  # 会话超时时间，默认是20*tickTime
+  session-timeout-ms: 5000
+  #重试连接间隔：ms
+  base-sleep-time-ms: 1000
+  # 最大重试次数
+  max-retries: 20
+
+spring:
+  datasource:
+    #  驱动
+    driver-class-name: org.h2.Driver
+    # h2 内存数据库 内存模式连接配置 库名: main
+    #url: jdbc:h2:mem:main
+    # h2  嵌入模式连接  存储路径: E:/H2/yyzmain
+    url: jdbc:h2:file:E:/H2/yyzmain
+    # 初始化数据表
+    schema: classpath:sql/init.sql
+  h2:
+    console:
+      #开启console 访问 默认false
+      enabled: true
+      settings:
+        # 开启h2 console 跟踪 方便调试  默认 false
+        trace: true
+        # 允许console 远程访问 默认false
+        web-allow-others: true
+      # h2 访问路径上下文
+      path: /h2-yyzmain
+
+
+# mybatis 配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
