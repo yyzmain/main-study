@@ -25,9 +25,11 @@ spring:
     # h2 内存数据库 内存模式连接配置 库名: main
     #url: jdbc:h2:mem:main
     # h2  嵌入模式连接  存储路径: E:/H2/yyzmain
-    url: jdbc:h2:file:E:/H2/yyzmain
+    url: jdbc:h2:file:E:/H2/halo-next
     # 初始化数据表
-    schema: classpath:sql/init.sql
+    #schema: classpath:sql/init.sql
+    password: 123456
+    username: admin
   h2:
     console:
       #开启console 访问 默认false
