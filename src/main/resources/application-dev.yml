@@ -19,6 +19,12 @@ zookeeper:
   max-retries: 20
 
 spring:
+  kafka:
+    producer:
+      # 自定义分区策略
+      properties:
+        partitioner:
+          class: cn.yyzmain.kafka.config.MainCustomPartitioner
   datasource:
     #  驱动
     driver-class-name: org.h2.Driver
@@ -42,18 +48,6 @@ spring:
       # h2 访问路径上下文
       path: /h2-yyzmain
 
-  kafka:
-    bootstrap-servers: 192.168.88.129:9092
-    consumer:
-      group-id: cn-yyzmain
-      auto-offset-reset: earliest
-      enable-auto-commit: false
-      max-poll-records: 5
-      session-timeout: 60000
-      max-poll-interval-ms: 300000
-    listener:
-      ack-mode: MANUAL_IMMEDIATE
-      concurrency: 1
 
 # mybatis 配置
 mybatis:
